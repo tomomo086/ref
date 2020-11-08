@@ -58,9 +58,11 @@ public class DataAccessBean {
 				RefInfo refInfo = new RefInfo();
 
 				//refInfoオブジェクトにSQLから返された値をそれぞれセットする
+				refInfo.setName(rs.getString("type"));
 				refInfo.setName(rs.getString("name"));
 				refInfo.setAmount(rs.getString("amount"));
 				refInfo.setBuy(rs.getString("buy"));
+				refInfo.setName(rs.getString("note"));
 
 				//refInfoオブジェクトをリストに追加
 				refList.add(refInfo);
