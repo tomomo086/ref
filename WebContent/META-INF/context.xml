@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<Context path="ref">
+	<ResourceLink name="jdbc/portforio" global="portforio"
+		type="javax.sql.DataSource" />
+</Context>
