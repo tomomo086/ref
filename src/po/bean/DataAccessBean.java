@@ -102,7 +102,7 @@ public class DataAccessBean {
 		try {
 
 			//新規登録・SQL文
-			String sql = "insert into reizouko (name,amount,buy) values(?,?,?)";
+			String sql = "insert into reizouko2 (type,name,amount,buy,note) values(?,?,?,?,?)";
 
 			//二重チェック・SQL文
 			String sqlcheck = "select name from reizouko where name = ?";
@@ -126,9 +126,12 @@ public class DataAccessBean {
 			ps2 = conn.prepareStatement(sql);
 
 			//新規登録・パラメーター設定
-			ps2.setString(1, refInfo.getName());
-			ps2.setString(2, refInfo.getAmount());
-			ps2.setString(3, refInfo.getBuy());
+			ps2.setString(1, refInfo.getType());
+			ps2.setString(2, refInfo.getName());
+			ps2.setString(3, refInfo.getAmount());
+			ps2.setString(4, refInfo.getBuy());
+			ps2.setString(5, refInfo.getNote());
+
 
 			//新規登録SQL実行
 			ps2.executeUpdate();
