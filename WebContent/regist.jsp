@@ -16,6 +16,10 @@
 		method="post">
 		<% //表を作成する %>
 		<table>
+		    <tr>
+				<th>区分</th>
+				<td><input type="text" name="type" /></td>
+			</tr>
 			<tr>
 				<th>名前</th>
 				<td><input type="text" name="name" /></td>
@@ -28,7 +32,10 @@
 				<th>購入日</th>
 				<td><input type="text" name="buy" /></td>
 			</tr>
-
+			<tr>
+				<th>備考</th>
+				<td><input type="text" name="note" /></td>
+			</tr>
 		</table>
 		<input type="submit" value="登録" />
 	</form>
