@@ -136,6 +136,7 @@ public class DataAccessBean {
 			//新規登録SQL実行
 			ps2.executeUpdate();
 
+
 			//例外処理
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -168,7 +169,7 @@ public class DataAccessBean {
 		try {
 
 			//削除用SQL実行文
-			String sql = "delete from reizouko where name = ?";
+			String sql = "delete from reizouko2 where name = ?";
 
 			//SQLへのコネクション
 			conn = getDataSource().getConnection();
