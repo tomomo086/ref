@@ -35,13 +35,11 @@ public class RegistServlet extends HttpServlet {
 				request.setAttribute("message", "名称を入力してください");
 				RequestDispatcher rd = request.getRequestDispatcher("/regist.jsp");
 				rd.forward(request, response);
-
 			}
 			if(amount == null || amount.length() < 1) {
 				request.setAttribute("message", "数量を入力してください");
 				RequestDispatcher rd = request.getRequestDispatcher("/regist.jsp");
 				rd.forward(request, response);
-
 			}
 			if(buy == null || buy.length() < 1) {
 				request.setAttribute("message", "購入日を入力してください");
@@ -54,9 +52,11 @@ public class RegistServlet extends HttpServlet {
 			RefInfo refInfo = new RefInfo();
 
 			//refInfoのオブジェクトに入力値を入れる
+			refInfo.setType(type);
 			refInfo.setName(name);
 			refInfo.setAmount(amount);
 			refInfo.setBuy(buy);
+			refInfo.setNote(note);
 
 
 			DataAccessBean dab = new DataAccessBean();
