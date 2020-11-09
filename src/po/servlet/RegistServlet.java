@@ -46,10 +46,25 @@ public class RegistServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("/regist.jsp");
 				rd.forward(request, response);
 				//ソースコードの途中の場合はreturnをする
-				return;
+                return;
 			}
 
 			RefInfo refInfo = new RefInfo();
+
+			DataAccessBean dab = new DataAccessBean();
+
+
+			if(type == null || type.length() < 1) {
+
+				refInfo.setType(type);
+				refInfo.setName(name);
+				refInfo.setAmount(amount);
+				refInfo.setBuy(buy);
+				refInfo.setNote(note);
+
+				dab.registSyokuhinnRefInfo(refInfo);
+
+			} else {
 
 			//refInfoのオブジェクトに入力値を入れる
 			refInfo.setType(type);
@@ -58,11 +73,20 @@ public class RegistServlet extends HttpServlet {
 			refInfo.setBuy(buy);
 			refInfo.setNote(note);
 
-
-			DataAccessBean dab = new DataAccessBean();
-
 			//DataAccessBeanのregistRefInfoメソッドにrefInfoを渡してdabで呼び出している
 			dab.registRefInfo(refInfo);
+
+
+			}
+
+
+
+
+
+
+
+
+
 
 			//一覧表示ページにリダイレクトする
 			response.sendRedirect(request.getContextPath() + "/findall");

@@ -160,18 +160,18 @@ public class DataAccessBean {
 	}
 
 
-	public void registSyokuhinnRefInfo(RefInfo refInfo) throws SQLException{
+	public void registSyokuhinnRefInfo(RefInfo refInfo) throws SQLException,DuplicateNameException{
 
 		//フィールド設定
 		Connection conn = null;
 
 		PreparedStatement ps = null;
-		ResultSet rs = null;
+
 
 		try {
 
 			//備考登録・SQL文
-			String sql = "insert into reizouko2 (note) values('test')";
+			String sql = "insert into reizouko2 (type,name,amount,buy,note) values(?,?,?,?,'test')";
 
 
 			//DataSourceへコネクションする
@@ -181,6 +181,11 @@ public class DataAccessBean {
 			ps = conn.prepareStatement(sql);
 
 			//備考登録・パラメーター設定
+
+			ps.setString(1, refInfo.getType());
+			ps.setString(2, refInfo.getName());
+			ps.setString(3, refInfo.getAmount());
+			ps.setString(4, refInfo.getBuy());
 
 			ps.setString(5, refInfo.getNote());
 
@@ -202,9 +207,7 @@ public class DataAccessBean {
 			if (ps != null) {
 				ps.close();
 			}
-			if (rs != null) {
-				rs.close();
-			}
+
 		}
 	}
 
