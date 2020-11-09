@@ -24,9 +24,11 @@ public class RegistServlet extends HttpServlet {
 		try {
 
 			//ブラウザからの入力値を取得
+			String type = request.getParameter("type");
 			String name = request.getParameter("name");
 			String amount = request.getParameter("amount");
 			String buy = request.getParameter("buy");
+			String note = request.getParameter("note");
 
 			//未入力チェック
 			if(name == null || name.length() < 1) {
