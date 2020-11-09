@@ -9,19 +9,22 @@
 	一覧
 	<table border="1">
 		<tr>
+			<th>区分</th>
 			<th>名前</th>
 			<th>数量</th>
 			<th>購入日</th>
-
+			<th>備考</th>
 		</tr>
 
 		<% // FindAllServletにある(requestスコープに格納された)refInfoListにある要素を中に入っている分取り出していく %>
 		<c:forEach var="refInfo" items="${ refInfoList }">
 			<tr>
 			<% // EL式で出力していく %>
+			    <td>${ refInfo.type}</td>
 				<td>${ refInfo.name }</td>
 				<td>${ refInfo.amount }</td>
 				<td>${ refInfo.buy }</td>
+				<td>${ refInfo.note }</td>
 				<td>
 				<% // 削除機能 %>
 				    <form action="${ pageContext.request.contextPath }/delete" method="post">
