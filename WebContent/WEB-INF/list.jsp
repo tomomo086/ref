@@ -38,6 +38,6 @@
 	</table>
 	<% // TODO ssj_ex15 1_【全件表示一覧機能】手順4 新規登録ページへのリンク %>
 	<a href="${ pageContext.request.contextPath }/regist.jsp">新規登録ページへ</a>
-	<a href="${ pageContext.request.contextPath }/syoumi.jsp">賞味期限ページへ</a>
+	<a href="${ pageContext.request.contextPath }/findsyoumi">賞味期限ページへ</a>
 </body>
 </html>
