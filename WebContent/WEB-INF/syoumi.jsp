@@ -25,7 +25,6 @@
 				<td>${ refsyoumiInfo.amount }</td>
 				<td>${ refsyoumiInfo.buy }</td>
 				<td>${ refsyoumiInfo.note }</td>
-				<td>
 				</td>
 			</tr>
 		</c:forEach>
