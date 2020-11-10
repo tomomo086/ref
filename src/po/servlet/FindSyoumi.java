@@ -18,22 +18,22 @@ import po.bean.RefInfo;
 @WebServlet(name = "FindSyoumi", urlPatterns = "/findsyoumi")
 public class FindSyoumi extends HttpServlet {
 
-      
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		try{
 
 			DataAccessBean dab = new DataAccessBean();
 			Collection<RefInfo> refInfoList = dab.findAllRefInfo();
 			request.setAttribute("refInfoList", refInfoList);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/syoumi.jsp");
 			rd.forward(request, response);
 
 		} catch(SQLException e) {
 			e.printStackTrace();
 			request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
 		}
-	
+
 	}
 
 }
