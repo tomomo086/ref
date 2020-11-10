@@ -24,8 +24,8 @@ public class FindSyoumi extends HttpServlet {
 		try{
 
 			DataAccessBean dab = new DataAccessBean();
-			Collection<RefInfo> refInfoList = dab.findAllRefInfo();
-			request.setAttribute("refInfoList", refInfoList);
+			Collection<RefInfo> refsyoumiInfoList = dab.findsyoumiRefInfo();
+			request.setAttribute("refsyoumiInfoList", refsyoumiInfoList);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/syoumi.jsp");
 			rd.forward(request, response);
 
