@@ -90,6 +90,65 @@ public class DataAccessBean {
 
 	}
 
+
+	// 賞味期限一覧表示機能・RefInfoをコレクション化する
+	public Collection<RefInfo> findsyoumiRefInfo() throws SQLException{
+
+		//フィールド設定
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+
+			// SQLの命令文
+			String sql = "select type,name,amount,buy,note from reizouko2 where note like '賞味期限%'";
+
+			// コレクションをインスタンス化したrefListを作成
+			Collection<RefInfo> refsyoumiList = new ArrayList<RefInfo>();
+
+			conn = getDataSource().getConnection();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+
+			while(rs.next()){
+				RefInfo refsyoumiInfo = new RefInfo();
+
+				//refInfoオブジェクトにSQLから返された値をそれぞれセットする
+				refsyoumiInfo.setType(rs.getString("type"));
+				refsyoumiInfo.setName(rs.getString("name"));
+				refsyoumiInfo.setAmount(rs.getString("amount"));
+				refsyoumiInfo.setBuy(rs.getString("buy"));
+				refsyoumiInfo.setNote(rs.getString("note"));
+
+				//refInfoオブジェクトをリストに追加
+				refsyoumiList.add(refsyoumiInfo);
+			}
+			return refsyoumiList;
+
+		//例外処理
+		} catch (NamingException e){
+			e.printStackTrace();
+			throw new SQLException(e);
+		}
+
+		//クローズ処理
+		finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (ps != null) {
+				ps.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		}
+
+	}
+
+
     //二重登録チェックのメソッド
 	public void registRefInfo(RefInfo refInfo) throws SQLException,DuplicateNameException{
 
