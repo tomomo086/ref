@@ -44,7 +44,7 @@ public class DataAccessBean {
 		try {
 
 			// SQLの命令文
-			String sql = "select type,name,amount,buy,note from reizouko2";
+			String sql = "select type,name,amount,buy,note from reizouko2 order by buy asc";
 
 			// コレクションをインスタンス化したrefListを作成
 			Collection<RefInfo> refList = new ArrayList<RefInfo>();
@@ -103,7 +103,7 @@ public class DataAccessBean {
 
 			// SQLの命令文
 			String sql = "select type,name,amount,buy,note from reizouko2 "
-					+ "where note like '%期限%' ";
+					+ "where note like '%期限%' order by buy asc";
 
 			// コレクションをインスタンス化したrefListを作成
 			Collection<RefInfo> refsyoumiList = new ArrayList<RefInfo>();
