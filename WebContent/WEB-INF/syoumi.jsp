@@ -17,14 +17,14 @@
 		</tr>
 
 		<% // FindAllServletにある(requestスコープに格納された)refInfoListにある要素を中に入っている分取り出していく %>
-		<c:forEach var="refInfo" items="${ refInfoList }">
+		<c:forEach var="refsyoumiInfo" items="${ refsyoumiInfoList }">
 			<tr>
 			<% // EL式で出力していく %>
-			    <td>${ refInfo.type}</td>
-				<td>${ refInfo.name }</td>
-				<td>${ refInfo.amount }</td>
-				<td>${ refInfo.buy }</td>
-				<td>${ refInfo.note }</td>
+			    <td>${ refsyoumiInfo.type}</td>
+				<td>${ refsyoumiInfo.name }</td>
+				<td>${ refsyoumiInfo.amount }</td>
+				<td>${ refsyoumiInfo.buy }</td>
+				<td>${ refsyoumiInfo.note }</td>
 				<td>
 				</td>
 			</tr>
