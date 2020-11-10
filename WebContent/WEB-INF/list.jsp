@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>一覧</title>
+<title>冷蔵庫管理表</title>
 </head>
 <body>
 	一覧
