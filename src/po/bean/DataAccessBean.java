@@ -160,54 +160,6 @@ public class DataAccessBean {
 	}
 
 
-	public void registSyokuhinnRefInfo(RefInfo refInfo) throws SQLException{
-
-		//フィールド設定
-		Connection conn = null;
-
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-
-		try {
-
-			//備考登録・SQL文
-			String sql = "insert into reizouko2 (note) values('test')";
-
-
-			//DataSourceへコネクションする
-			conn = getDataSource().getConnection();
-
-			//備考登録・オブジェクト生成
-			ps = conn.prepareStatement(sql);
-
-			//備考登録・パラメーター設定
-
-			ps.setString(5, refInfo.getNote());
-
-
-			//備考登録SQL実行
-			ps.executeUpdate();
-
-
-			//例外処理
-		} catch (NamingException e) {
-			e.printStackTrace();
-			throw new SQLException(e);
-
-			//クローズ処理
-		} finally {
-			if (conn != null) {
-				conn.close();
-			}
-			if (ps != null) {
-				ps.close();
-			}
-			if (rs != null) {
-				rs.close();
-			}
-		}
-	}
-
 	//削除機能・メソッド
 	public void deleteRefInfo(String name) throws SQLException {
 
