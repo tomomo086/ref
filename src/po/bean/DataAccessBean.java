@@ -102,7 +102,8 @@ public class DataAccessBean {
 		try {
 
 			// SQLの命令文
-			String sql = "select type,name,amount,buy,note from reizouko2 where note like '賞味期限%'";
+			String sql = "select type,name,amount,buy,note from reizouko2 "
+					+ "where note like '%期限%' ";
 
 			// コレクションをインスタンス化したrefListを作成
 			Collection<RefInfo> refsyoumiList = new ArrayList<RefInfo>();
