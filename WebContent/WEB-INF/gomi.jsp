@@ -28,7 +28,7 @@
 				<td>
 				<% // 削除機能 %>
 				    <form action="${ pageContext.request.contextPath }/delete" method="post">
-				        <input type="hidden" name="name" value="${ refInfo.name }" />
+				        <input type="hidden" name="name" value="${ refgomiInfo.name }" />
 				        <input type="submit" value="削除" />
 				    </form>
 				</td>
