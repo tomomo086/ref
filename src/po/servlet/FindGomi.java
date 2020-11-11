@@ -15,7 +15,7 @@ import po.bean.DataAccessBean;
 import po.bean.RefInfo;
 
 @SuppressWarnings("serial")
-@WebServlet(name = "FindGomi", urlPatterns = "/gomi")
+@WebServlet(name = "FindGomi", urlPatterns = "/findgomi")
 public class FindGomi extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
