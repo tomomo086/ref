@@ -16,7 +16,7 @@
 			<th>備考</th>
 		</tr>
 
-		<% // FindAllServletにある(requestスコープに格納された)refInfoListにある要素を中に入っている分取り出していく %>
+		<% // FindsyoumiServletにある(requestスコープに格納された)refsyoumiInfoListにある要素を中に入っている分取り出していく %>
 		<c:forEach var="refsyoumiInfo" items="${ refsyoumiInfoList }">
 			<tr>
 			<% // EL式で出力していく %>
