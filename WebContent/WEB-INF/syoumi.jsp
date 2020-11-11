@@ -15,7 +15,6 @@
 			<th>購入日</th>
 			<th>備考</th>
 		</tr>
-
 		<% // FindsyoumiServletにある(requestスコープに格納された)refsyoumiInfoListにある要素を中に入っている分取り出していく %>
 		<c:forEach var="refsyoumiInfo" items="${ refsyoumiInfoList }">
 			<tr>
@@ -34,7 +33,6 @@
 				</td>
 			</tr>
 		</c:forEach>
-
 	</table>
 	<% // TODO ssj_ex15 1_【全件表示一覧機能】手順4 新規登録ページへのリンク %>
 	<a href="${ pageContext.request.contextPath }/findall">一覧表示ページへ</a>
