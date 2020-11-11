@@ -16,15 +16,15 @@
 			<th>備考</th>
 		</tr>
 
-		<% // FindAllServletにある(requestスコープに格納された)refInfoListにある要素を中に入っている分取り出していく %>
-		<c:forEach var="refInfo" items="${ refInfoList }">
+		<% // FindGomiにある(requestスコープに格納された)refgomiInfoListにある要素を中に入っている分取り出していく %>
+		<c:forEach var="refgomiInfo" items="${ refgomiInfoList }">
 			<tr>
 			<% // EL式で出力していく %>
-			    <td>${ refInfo.type}</td>
-				<td>${ refInfo.name }</td>
-				<td>${ refInfo.amount }</td>
-				<td>${ refInfo.buy }</td>
-				<td>${ refInfo.note }</td>
+			    <td>${ refgomiInfo.type}</td>
+				<td>${ refgomiInfo.name }</td>
+				<td>${ refgomiInfo.amount }</td>
+				<td>${ refgomiInfo.buy }</td>
+				<td>${ refgomiInfo.note }</td>
 				<td>
 				<% // 削除機能 %>
 				    <form action="${ pageContext.request.contextPath }/delete" method="post">
@@ -37,7 +37,7 @@
 
 	</table>
 	<% // TODO ssj_ex15 1_【全件表示一覧機能】手順4 新規登録ページへのリンク %>
-	<br><a href="${ pageContext.request.contextPath }/regist.jsp">新規登録ページへ</a>
+	<br><a href="${ pageContext.request.contextPath }/findall">一覧ページへ</a>
 	<br><a href="${ pageContext.request.contextPath }/findsyoumi">賞味期限ページへ</a>
 </body>
 </html>
