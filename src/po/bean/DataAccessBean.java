@@ -44,7 +44,7 @@ public class DataAccessBean {
 		try {
 
 			// SQLの命令文
-			String sql = "select type,name,amount,buy,note from reizouko2 order by buy asc";
+			String sql = "select type,name,amount,buy,note,gomi from reizouko2 order by buy asc";
 
 			// コレクションをインスタンス化したrefListを作成
 			Collection<RefInfo> refList = new ArrayList<RefInfo>();
@@ -220,7 +220,7 @@ public class DataAccessBean {
 		try {
 
 			//新規登録・SQL文
-			String sql = "insert into reizouko2 (type,name,amount,buy,note) values(?,?,?,?,?)";
+			String sql = "insert into reizouko2 (type,name,amount,buy,note,gomi) values(?,?,?,?,?,null)";
 
 			//二重チェック・SQL文
 			String sqlcheck = "select name from reizouko where name = ?";
@@ -249,6 +249,7 @@ public class DataAccessBean {
 			ps2.setString(3, refInfo.getAmount());
 			ps2.setString(4, refInfo.getBuy());
 			ps2.setString(5, refInfo.getNote());
+			ps2.setString(6, refInfo.getGomi());
 
 
 			//新規登録SQL実行
