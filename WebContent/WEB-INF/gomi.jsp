@@ -38,6 +38,4 @@
 	</table>
 	<% // TODO ssj_ex15 1_【全件表示一覧機能】手順4 新規登録ページへのリンク %>
 	<br><a href="${ pageContext.request.contextPath }/findall">一覧ページへ</a>
-	<br><a href="${ pageContext.request.contextPath }/findsyoumi">賞味期限ページへ</a>
-</body>
 </html>
