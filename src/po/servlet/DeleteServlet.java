@@ -28,7 +28,7 @@ public class DeleteServlet extends HttpServlet {
 			dab.deleteRefInfo(name);
 
 			// /findall（一覧表示機能）にRedirectする
-			response.sendRedirect(request.getContextPath() + "/findall");
+			response.sendRedirect(request.getContextPath() + "/findgomi");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
