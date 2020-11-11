@@ -149,6 +149,64 @@ public class DataAccessBean {
 
 	}
 
+	// ゴミ箱表示機能・RefInfoをコレクション化する
+		public Collection<RefInfo> findgomiRefInfo() throws SQLException{
+
+			//フィールド設定
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+
+			try {
+
+				// SQLの命令文
+				String sql = "select type,name,amount,buy,note from reizouko2 where gomi = 1";
+
+				// コレクションをインスタンス化したrefListを作成
+				Collection<RefInfo> refgomiList = new ArrayList<RefInfo>();
+
+				conn = getDataSource().getConnection();
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+
+
+				while(rs.next()){
+					RefInfo refgomiInfo = new RefInfo();
+
+					//refgomiInfoオブジェクトにSQLから返された値をそれぞれセットする
+					refgomiInfo.setType(rs.getString("type"));
+					refgomiInfo.setName(rs.getString("name"));
+					refgomiInfo.setAmount(rs.getString("amount"));
+					refgomiInfo.setBuy(rs.getString("buy"));
+					refgomiInfo.setNote(rs.getString("note"));
+
+					//refgomiInfoオブジェクトをリストに追加
+					refgomiList.add(refgomiInfo);
+				}
+				return refgomiList;
+
+			//例外処理
+			} catch (NamingException e){
+				e.printStackTrace();
+				throw new SQLException(e);
+			}
+
+			//クローズ処理
+			finally {
+				if (rs != null) {
+					rs.close();
+				}
+				if (ps != null) {
+					ps.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			}
+
+		}
+
+
 
     //二重登録チェックのメソッド
 	public void registRefInfo(RefInfo refInfo) throws SQLException,DuplicateNameException{
