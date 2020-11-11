@@ -13,6 +13,7 @@ public class RefInfo implements Serializable {
 	private String amount;
 	private String buy;
 	private String note;
+	private String gomi;
 
 
 	public String getType() {
@@ -30,6 +31,9 @@ public class RefInfo implements Serializable {
 	public String getNote() {
 		return note;
 	}
+	public String getGomi() {
+		return gomi;
+	}
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -44,6 +48,9 @@ public class RefInfo implements Serializable {
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	public void setGomi(String gomi) {
+		this.note = gomi;
 	}
 
 
