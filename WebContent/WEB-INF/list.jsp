@@ -27,9 +27,9 @@
 				<td>${ refInfo.note }</td>
 				<td>
 				<% // 削除機能 %>
-				    <form action="${ pageContext.request.contextPath }/delete" method="post">
+				    <form action="${ pageContext.request.contextPath }/movegomi" method="post">
 				        <input type="hidden" name="name" value="${ refInfo.name }" />
-				        <input type="submit" value="削除" />
+				        <input type="submit" value="ゴミ箱" />
 				    </form>
 				</td>
 			</tr>
