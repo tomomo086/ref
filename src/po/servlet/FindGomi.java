@@ -18,6 +18,7 @@ import po.bean.RefInfo;
 @WebServlet(name = "FindGomi", urlPatterns = "/findgomi")
 public class FindGomi extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
