@@ -63,7 +63,6 @@ public class DataAccessBean {
 				refInfo.setAmount(rs.getString("amount"));
 				refInfo.setBuy(rs.getString("buy"));
 				refInfo.setNote(rs.getString("note"));
-				//refInfo.setGomi(rs.getString("gomi"));
 
 				//refInfoオブジェクトをリストに追加
 				refList.add(refInfo);
@@ -301,7 +300,6 @@ public class DataAccessBean {
 
 				//ゴミ箱・パラメーター設定
 				ps.setString(1, name);
-				//ps.setString(2, gomi);
 
 
 				//ゴミ箱移動機能SQL実行

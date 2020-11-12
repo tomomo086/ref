@@ -19,14 +19,11 @@ public class MoveGomi extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
+
 			String name = request.getParameter("name");
-
 			DataAccessBean dab = new DataAccessBean();
-
 			dab.movegomiRefInfo(name);
-
 			response.sendRedirect(request.getContextPath() + "/findall");
-
 
 		} catch (SQLException e) {
 			e.printStackTrace();
