@@ -21,6 +21,7 @@ public class RegistServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		try {
 
 			//ブラウザからの入力値を取得
@@ -79,7 +80,6 @@ public class RegistServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/regist.jsp");
 			rd.forward(request, response);
 		}
-
 
 	}
 

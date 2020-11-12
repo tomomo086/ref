@@ -150,62 +150,62 @@ public class DataAccessBean {
 	}
 
 	// ゴミ箱表示機能・RefInfoをコレクション化する
-		public Collection<RefInfo> findgomiRefInfo() throws SQLException{
+	public Collection<RefInfo> findgomiRefInfo() throws SQLException{
 
-			//フィールド設定
-			Connection conn = null;
-			PreparedStatement ps = null;
-			ResultSet rs = null;
+		//フィールド設定
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 
-			try {
+		try {
 
-				// SQLの命令文
-				String sql = "select type,name,amount,buy,note from reizouko2 "
-						+ "where gomi = 1 order by buy asc";
+			// SQLの命令文
+			String sql = "select type,name,amount,buy,note from reizouko2 "
+					+ "where gomi = 1 order by buy asc";
 
-				// コレクションをインスタンス化したrefListを作成
-				Collection<RefInfo> refgomiList = new ArrayList<RefInfo>();
+			// コレクションをインスタンス化したrefListを作成
+			Collection<RefInfo> refgomiList = new ArrayList<RefInfo>();
 
-				conn = getDataSource().getConnection();
-				ps = conn.prepareStatement(sql);
-				rs = ps.executeQuery();
+			conn = getDataSource().getConnection();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
 
 
-				while(rs.next()){
-					RefInfo refgomiInfo = new RefInfo();
+			while(rs.next()){
+				RefInfo refgomiInfo = new RefInfo();
 
-					//refgomiInfoオブジェクトにSQLから返された値をそれぞれセットする
-					refgomiInfo.setType(rs.getString("type"));
-					refgomiInfo.setName(rs.getString("name"));
-					refgomiInfo.setAmount(rs.getString("amount"));
-					refgomiInfo.setBuy(rs.getString("buy"));
-					refgomiInfo.setNote(rs.getString("note"));
+				//refgomiInfoオブジェクトにSQLから返された値をそれぞれセットする
+				refgomiInfo.setType(rs.getString("type"));
+				refgomiInfo.setName(rs.getString("name"));
+				refgomiInfo.setAmount(rs.getString("amount"));
+				refgomiInfo.setBuy(rs.getString("buy"));
+				refgomiInfo.setNote(rs.getString("note"));
 
-					//refgomiInfoオブジェクトをリストに追加
-					refgomiList.add(refgomiInfo);
-				}
-				return refgomiList;
+				//refgomiInfoオブジェクトをリストに追加
+				refgomiList.add(refgomiInfo);
+			}
+			return refgomiList;
 
 			//例外処理
-			} catch (NamingException e){
-				e.printStackTrace();
-				throw new SQLException(e);
-			}
-
-			//クローズ処理
-			finally {
-				if (rs != null) {
-					rs.close();
-				}
-				if (ps != null) {
-					ps.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			}
-
+		} catch (NamingException e){
+			e.printStackTrace();
+			throw new SQLException(e);
 		}
+
+		//クローズ処理
+		finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (ps != null) {
+				ps.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		}
+
+	}
 
 
 
@@ -281,46 +281,45 @@ public class DataAccessBean {
 
 
 	//ゴミ箱移動機能のメソッド
-		public void movegomiRefInfo(String name) throws SQLException{
+	public void movegomiRefInfo(String name) throws SQLException{
 
-			//フィールド設定
-			Connection conn = null;
-			PreparedStatement ps = null;
+		//フィールド設定
+		Connection conn = null;
+		PreparedStatement ps = null;
 
-			try {
+		try {
 
-				//ゴミ箱移動機能・SQL文(gomiカラムに1の値をセットする)
-				String sql = "update reizouko2 set gomi = 1 where name = ?";
+			//ゴミ箱移動機能・SQL文(gomiカラムに1の値を上書きする)
+			String sql = "update reizouko2 set gomi = 1 where name = ?";
 
-				//DataSourceへコネクションする
-				conn = getDataSource().getConnection();
+			//DataSourceへコネクションする
+			conn = getDataSource().getConnection();
 
-    			//ゴミ箱・オブジェクト生成
-				ps = conn.prepareStatement(sql);
+    		//ゴミ箱・オブジェクト生成
+			ps = conn.prepareStatement(sql);
 
-				//ゴミ箱・パラメーター設定
-				ps.setString(1, name);
+			//ゴミ箱・パラメーター設定
+			ps.setString(1, name);
+
+			//ゴミ箱移動機能SQL実行
+			ps.executeUpdate();
 
 
-				//ゴミ箱移動機能SQL実行
-				ps.executeUpdate();
+		//例外処理
+		} catch (NamingException e) {
+			e.printStackTrace();
+			throw new SQLException(e);
 
-
-				//例外処理
-			} catch (NamingException e) {
-				e.printStackTrace();
-				throw new SQLException(e);
-
-				//クローズ処理
-			} finally {
-				if (conn != null) {
-					conn.close();
-				}
-				if (ps != null) {
-					ps.close();
-				}
+		//クローズ処理
+		} finally {
+			if (conn != null) {
+				conn.close();
+			}
+			if (ps != null) {
+				ps.close();
 			}
 		}
+	}
 
 
 	//削除機能・メソッド
@@ -360,46 +359,44 @@ public class DataAccessBean {
 	}
 
 
-	//復元機能のメソッド
-			public void recoveryRefInfo(String name) throws SQLException{
+	 //復元機能のメソッド
+	public void recoveryRefInfo(String name) throws SQLException{
 
-				//フィールド設定
-				Connection conn = null;
-				PreparedStatement ps = null;
+		//フィールド設定
+		Connection conn = null;
+		PreparedStatement ps = null;
 
-				try {
+		try {
 
-					//ゴミ箱移動機能・SQL文(gomiカラムに1の値をセットする)
-					String sql = "update reizouko2 set gomi = null where name = ?";
+			//復元機能・SQL文(gomiカラムをnullに上書きする)
+			String sql = "update reizouko2 set gomi = null where name = ?";
 
-					//DataSourceへコネクションする
-					conn = getDataSource().getConnection();
+			//DataSourceへコネクションする
+			conn = getDataSource().getConnection();
 
-	    			//ゴミ箱・オブジェクト生成
-					ps = conn.prepareStatement(sql);
+	    	//復元機能・オブジェクト生成
+			ps = conn.prepareStatement(sql);
 
-					//ゴミ箱・パラメーター設定
-					ps.setString(1, name);
+			//復元機能・パラメーター設定
+			ps.setString(1, name);
 
+			//復元機能機能SQL実行
+			ps.executeUpdate();
 
-					//ゴミ箱移動機能SQL実行
-					ps.executeUpdate();
+		//例外処理
+		} catch (NamingException e) {
+			e.printStackTrace();
+			throw new SQLException(e);
 
-
-					//例外処理
-				} catch (NamingException e) {
-					e.printStackTrace();
-					throw new SQLException(e);
-
-					//クローズ処理
-				} finally {
-					if (conn != null) {
-						conn.close();
-					}
-					if (ps != null) {
-						ps.close();
-					}
-				}
+		//クローズ処理
+		} finally {
+			if (conn != null) {
+				conn.close();
 			}
+			if (ps != null) {
+				ps.close();
+			}
+		}
+	}
 
 }

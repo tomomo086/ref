@@ -53,5 +53,4 @@ public class RefInfo implements Serializable {
 		this.gomi = gomi;
 	}
 
-
 }
