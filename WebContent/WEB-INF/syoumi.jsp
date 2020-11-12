@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>早めに消費すべき食品たち</title>
+<title>賞味期限の早いもの</title>
 </head>
 <body>
-	一覧
+	賞味期限の早いもの
 	<table border="1">
 		<tr>
 			<th>区分</th>

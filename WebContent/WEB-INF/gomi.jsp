@@ -6,7 +6,7 @@
 <title>ゴミ箱</title>
 </head>
 <body>
-	一覧
+	ゴミ箱
 	<table border="1">
 		<tr>
 			<th>区分</th>
