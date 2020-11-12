@@ -26,6 +26,13 @@
 				<td>${ refgomiInfo.buy }</td>
 				<td>${ refgomiInfo.note }</td>
 				<td>
+				<% //復元機能 %>
+				    <form action="${ pageContext.request.contextPath }/recovery" method="post">
+				        <input type="hidden" name="name" value="${ refgomiInfo.name }" />
+				        <input type="submit" value="戻す" />
+				    </form>
+				</td>
+				<td>
 				<% // 削除機能 %>
 				    <form action="${ pageContext.request.contextPath }/delete" method="post">
 				        <input type="hidden" name="name" value="${ refgomiInfo.name }" />

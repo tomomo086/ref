@@ -360,4 +360,46 @@ public class DataAccessBean {
 	}
 
 
+	//復元機能のメソッド
+			public void recoveryRefInfo(String name) throws SQLException{
+
+				//フィールド設定
+				Connection conn = null;
+				PreparedStatement ps = null;
+
+				try {
+
+					//ゴミ箱移動機能・SQL文(gomiカラムに1の値をセットする)
+					String sql = "update reizouko2 set gomi = null where name = ?";
+
+					//DataSourceへコネクションする
+					conn = getDataSource().getConnection();
+
+	    			//ゴミ箱・オブジェクト生成
+					ps = conn.prepareStatement(sql);
+
+					//ゴミ箱・パラメーター設定
+					ps.setString(1, name);
+
+
+					//ゴミ箱移動機能SQL実行
+					ps.executeUpdate();
+
+
+					//例外処理
+				} catch (NamingException e) {
+					e.printStackTrace();
+					throw new SQLException(e);
+
+					//クローズ処理
+				} finally {
+					if (conn != null) {
+						conn.close();
+					}
+					if (ps != null) {
+						ps.close();
+					}
+				}
+			}
+
 }
