@@ -20,12 +20,13 @@ public class MoveGomi extends HttpServlet {
 
 		try {
 			String name = request.getParameter("name");
-			//String gomi = request.getParameter("gomi");
 
 			DataAccessBean dab = new DataAccessBean();
 
 			dab.movegomiRefInfo(name);
+
 			response.sendRedirect(request.getContextPath() + "/findall");
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -25,10 +25,10 @@
 				<td>${ refsyoumiInfo.buy }</td>
 				<td>${ refsyoumiInfo.note }</td>
 				<td>
-				<% // 削除機能 %>
-				    <form action="${ pageContext.request.contextPath }/delete" method="post">
-				        <input type="hidden" name="name" value="${ refInfo.name }" />
-				        <input type="submit" value="削除" />
+				<% // ゴミ箱移動機能 %>
+				    <form action="${ pageContext.request.contextPath }/movegomi2" method="post">
+				        <input type="hidden" name="name2" value="${ refsyoumiInfo.name }" />
+				        <input type="submit" value="ゴミ箱" />
 				    </form>
 				</td>
 			</tr>

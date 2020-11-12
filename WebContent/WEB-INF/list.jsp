@@ -26,7 +26,7 @@
 				<td>${ refInfo.buy }</td>
 				<td>${ refInfo.note }</td>
 				<td>
-				<% // 削除機能 %>
+				<% // ゴミ箱移動機能 %>
 				    <form action="${ pageContext.request.contextPath }/movegomi" method="post">
 				        <input type="hidden" name="name" value="${ refInfo.name }" />
 				        <input type="submit" value="ゴミ箱" />
