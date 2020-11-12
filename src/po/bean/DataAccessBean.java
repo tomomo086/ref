@@ -44,7 +44,7 @@ public class DataAccessBean {
 		try {
 
 			// SQLの命令文
-			String sql = "select type,name,amount,buy,note from reizouko2 where gomi = 0 order by buy asc";
+			String sql = "select type,name,amount,buy,note from reizouko2 where gomi is null order by buy asc";
 
 			// コレクションをインスタンス化したrefListを作成
 			Collection<RefInfo> refList = new ArrayList<RefInfo>();
@@ -221,7 +221,7 @@ public class DataAccessBean {
 		try {
 
 			//新規登録・SQL文
-			String sql = "insert into reizouko2 (type,name,amount,buy,note,gomi) values(?,?,?,?,?,null)";
+			String sql = "insert into reizouko2 (type,name,amount,buy,note,gomi) values(?,?,?,?,?,?)";
 
 			//二重チェック・SQL文
 			String sqlcheck = "select name from reizouko where name = ?";
