@@ -44,7 +44,7 @@ public class DataAccessBean {
 		try {
 
 			// SQLの命令文
-			String sql = "select type,name,amount,buy,note,gomi from reizouko2 order by buy asc";
+			String sql = "select type,name,amount,buy,note from reizouko2 where gomi = 0 order by buy asc";
 
 			// コレクションをインスタンス化したrefListを作成
 			Collection<RefInfo> refList = new ArrayList<RefInfo>();
@@ -63,6 +63,7 @@ public class DataAccessBean {
 				refInfo.setAmount(rs.getString("amount"));
 				refInfo.setBuy(rs.getString("buy"));
 				refInfo.setNote(rs.getString("note"));
+				//refInfo.setGomi(rs.getString("gomi"));
 
 				//refInfoオブジェクトをリストに追加
 				refList.add(refInfo);
@@ -160,7 +161,8 @@ public class DataAccessBean {
 			try {
 
 				// SQLの命令文
-				String sql = "select type,name,amount,buy,note from reizouko2 where gomi = 1";
+				String sql = "select type,name,amount,buy,note from reizouko2 "
+						+ "where gomi = 1 order by buy asc";
 
 				// コレクションをインスタンス化したrefListを作成
 				Collection<RefInfo> refgomiList = new ArrayList<RefInfo>();
@@ -280,12 +282,11 @@ public class DataAccessBean {
 
 
 	//ゴミ箱移動機能のメソッド
-		public void movegomiRefInfo(RefInfo refInfo) throws SQLException,DuplicateNameException{
+		public void movegomiRefInfo(String name) throws SQLException{
 
 			//フィールド設定
 			Connection conn = null;
 			PreparedStatement ps = null;
-			ResultSet rs = null;
 
 			try {
 
@@ -299,12 +300,8 @@ public class DataAccessBean {
 				ps = conn.prepareStatement(sql);
 
 				//ゴミ箱・パラメーター設定
-				ps.setString(1, refInfo.getType());
-				ps.setString(2, refInfo.getName());
-				ps.setString(3, refInfo.getAmount());
-				ps.setString(4, refInfo.getBuy());
-				ps.setString(5, refInfo.getNote());
-				ps.setString(6, refInfo.getGomi());
+				ps.setString(1, name);
+				//ps.setString(2, gomi);
 
 
 				//ゴミ箱移動機能SQL実行
@@ -323,9 +320,6 @@ public class DataAccessBean {
 				}
 				if (ps != null) {
 					ps.close();
-				}
-				if (rs != null) {
-					rs.close();
 				}
 			}
 		}
