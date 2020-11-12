@@ -103,7 +103,7 @@ public class DataAccessBean {
 
 			// SQLの命令文
 			String sql = "select type,name,amount,buy,note from reizouko2 "
-					+ "where  gomi is null and note like '%期限%' order by buy asc";
+					+ "where  gomi is null and note like '%期限%'or note like '%早%' order by buy asc";
 
 			// コレクションをインスタンス化したrefListを作成
 			Collection<RefInfo> refsyoumiList = new ArrayList<RefInfo>();
