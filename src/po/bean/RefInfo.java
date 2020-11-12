@@ -50,7 +50,7 @@ public class RefInfo implements Serializable {
 		this.note = note;
 	}
 	public void setGomi(String gomi) {
-		this.note = gomi;
+		this.gomi = gomi;
 	}
 
 
