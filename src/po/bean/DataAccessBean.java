@@ -279,6 +279,58 @@ public class DataAccessBean {
 	}
 
 
+	//ゴミ箱移動機能のメソッド
+		public void movegomiRefInfo(RefInfo refInfo) throws SQLException,DuplicateNameException{
+
+			//フィールド設定
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+
+			try {
+
+				//ゴミ箱移動機能・SQL文(gomiカラムに1の値をセットする)
+				String sql = "update reizouko2 set gomi = 1 where name = ?";
+
+				//DataSourceへコネクションする
+				conn = getDataSource().getConnection();
+
+    			//ゴミ箱・オブジェクト生成
+				ps = conn.prepareStatement(sql);
+
+				//ゴミ箱・パラメーター設定
+				ps.setString(1, refInfo.getType());
+				ps.setString(2, refInfo.getName());
+				ps.setString(3, refInfo.getAmount());
+				ps.setString(4, refInfo.getBuy());
+				ps.setString(5, refInfo.getNote());
+				ps.setString(6, refInfo.getGomi());
+
+
+				//ゴミ箱移動機能SQL実行
+				ps.executeUpdate();
+
+
+				//例外処理
+			} catch (NamingException e) {
+				e.printStackTrace();
+				throw new SQLException(e);
+
+				//クローズ処理
+			} finally {
+				if (conn != null) {
+					conn.close();
+				}
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			}
+		}
+
+
 	//削除機能・メソッド
 	public void deleteRefInfo(String name) throws SQLException {
 
